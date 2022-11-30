@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Skill Up</title>
+</head>
+<body>
+    <div class="header">
+        <div class="heading_box">
+            <h1 class="heading">Skill Up</h1>
+        </div>
+        <form action="#">
+            <div class="sideBySide">
+                <input type="text" name="First Name" id="fname" placeholder="First Name"><br>&nbsp;&nbsp;&nbsp;
+                <input type="text" name="Last Name" id="lname" placeholder="Last Name"><br>
+            </div>
+            <input type="email" name="email" id="email" placeholder="Email"><br>
+            <label for="cars">Add Skills:</label><br>
+            <!-- ?Skill -->
+            <select name="cars" id="cars">
+              <option value="">Select Techonology</option>
+              <option value="saab">Saab</option>
+              <option value="opel">Opel</option>
+              <option value="audi">Audi</option>
+            </select>
+            <select class="maring_bottom--medium" name="cars" id="cars">
+                <option value="">Level of skill:</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+            </select>
+            <button class="add" type="Add" name="add">Add</button>
+            <hr class="maring_bottom--medium">
+            <!-- ?Skill -->
+            <label for="cars">Selected Skills:</label><br>
+            <div class="skills_selected maring_bottom--medium">
+                <div class="skill_label maring_bottom--small">
+                    <h3>php</h3>
+                    <span>&nbsp;--&nbsp;</span>
+                    <h3>Level 5</h3>
+                </div>
+                <div class="skill_label">
+                    <h3>c++</h3>
+                    <span>&nbsp;--&nbsp;</span>
+                    <h3>Level 8</h3>
+                </div>
+            </div>
+            <hr class="maring_bottom--medium">
+            <button class="submit" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
