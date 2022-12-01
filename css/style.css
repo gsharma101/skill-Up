@@ -107,3 +107,10 @@ body {
       border: none;
       border-radius: 3rem;
       cursor: pointer; }
+  .header .fetch_result {
+    font-size: 1.5rem;
+    text-decoration: none;
+    background-color: yellowgreen;
+    color: white;
+    padding: 1rem;
+    border-radius: 1rem; }

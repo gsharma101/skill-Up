@@ -14,23 +14,30 @@
         </div>
         <form action="#">
             <div class="sideBySide">
-                <input type="text" name="First Name" id="fname" placeholder="First Name"><br>&nbsp;&nbsp;&nbsp;
-                <input type="text" name="Last Name" id="lname" placeholder="Last Name"><br>
+                <input type="text" name="First Name" id="fname" placeholder="First Name" required><br>&nbsp;&nbsp;&nbsp;
+                <input type="text" name="Last Name" id="lname" placeholder="Last Name" required><br>
             </div>
-            <input type="email" name="email" id="email" placeholder="Email"><br>
+            <input type="email" name="email" id="email" placeholder="Email" required><br>
             <label for="cars">Add Skills:</label><br>
             <!-- ?Skill -->
-            <select name="cars" id="cars">
+            <select name="cars" id="cars" required>
               <option value="">Select Techonology</option>
               <option value="saab">Saab</option>
               <option value="opel">Opel</option>
               <option value="audi">Audi</option>
             </select>
-            <select class="maring_bottom--medium" name="cars" id="cars">
+            <select class="maring_bottom--medium" name="cars" id="cars" required>
                 <option value="">Level of skill:</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+                <option value="Level 1">Level 1</option>
+                <option value="Level 2">Level 2</option>
+                <option value="Level 3">Level 3</option>
+                <option value="Level 4">Level 4</option>
+                <option value="Level 5">Level 5</option>
+                <option value="Level 6">Level 6</option>
+                <option value="Level 7">Level 7</option>
+                <option value="Level 8">Level 8</option>
+                <option value="Level 9">Level 9</option>
+                <option value="Level 10">Level 10</option>
             </select>
             <button class="add" type="Add" name="add">Add</button>
             <hr class="maring_bottom--medium">
@@ -51,6 +58,8 @@
             <hr class="maring_bottom--medium">
             <button class="submit" type="submit">Submit</button>
         </form>
+        <hr class="maring_bottom--medium">
+        <a class="fetch_result" href="#">View Data</a>
     </div>
 </body>
 </html>
