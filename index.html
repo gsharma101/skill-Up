@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Skill Up</title>
 </head>
+
 <body>
     <div class="header">
         <div class="heading_box">
@@ -14,46 +16,34 @@
         </div>
         <form action="#">
             <div class="sideBySide">
-                <input type="text" name="First Name" id="fname" placeholder="First Name" required><br>&nbsp;&nbsp;&nbsp;
-                <input type="text" name="Last Name" id="lname" placeholder="Last Name" required><br>
+                <input class="input" type="text" name="First Name" id="fname" placeholder="First Name"
+                    required><br>&nbsp;&nbsp;&nbsp;
+                <input class="input" type="text" name="Last Name" id="lname" placeholder="Last Name" required><br>
             </div>
-            <input type="email" name="email" id="email" placeholder="Email" required><br>
+            <input class="input" type="email" name="email" id="email" placeholder="Email" required><br>
             <label for="cars">Add Skills:</label><br>
             <!-- ?Skill -->
-            <select name="cars" id="cars" required>
-              <option value="">Select Techonology</option>
-              <option value="saab">Saab</option>
-              <option value="opel">Opel</option>
-              <option value="audi">Audi</option>
-            </select>
-            <select class="maring_bottom--medium" name="cars" id="cars" required>
-                <option value="">Level of skill:</option>
-                <option value="Level 1">Level 1</option>
-                <option value="Level 2">Level 2</option>
-                <option value="Level 3">Level 3</option>
-                <option value="Level 4">Level 4</option>
-                <option value="Level 5">Level 5</option>
-                <option value="Level 6">Level 6</option>
-                <option value="Level 7">Level 7</option>
-                <option value="Level 8">Level 8</option>
-                <option value="Level 9">Level 9</option>
-                <option value="Level 10">Level 10</option>
-            </select>
-            <button class="add" type="Add" name="add">Add</button>
+            <div class="tech_box maring_bottom--medium">
+                <input type="text" name="tech" id="techField" placeholder="Select Techonology"><br>
+                <select name="cars" id="skillLevel">
+                    <option value="">Level of skill:</option>
+                    <option value="1">Level 1</option>
+                    <option value="2">Level 2</option>
+                    <option value="3">Level 3</option>
+                    <option value="4">Level 4</option>
+                    <option value="5">Level 5</option>
+                    <option value="6">Level 6</option>
+                    <option value="7">Level 7</option>
+                    <option value="8">Level 8</option>
+                    <option value="9">Level 9</option>
+                    <option value="10">Level 10</option>
+                </select>
+                <button class="addDataBtn" type="Add" name="add">Add</button>
+            </div>
             <hr class="maring_bottom--medium">
             <!-- ?Skill -->
             <label for="cars">Selected Skills:</label><br>
             <div class="skills_selected maring_bottom--medium">
-                <div class="skill_label maring_bottom--small">
-                    <h3>php</h3>
-                    <span>&nbsp;--&nbsp;</span>
-                    <h3>Level 5</h3>
-                </div>
-                <div class="skill_label">
-                    <h3>c++</h3>
-                    <span>&nbsp;--&nbsp;</span>
-                    <h3>Level 8</h3>
-                </div>
             </div>
             <hr class="maring_bottom--medium">
             <button class="submit" type="submit">Submit</button>
@@ -62,4 +52,12 @@
         <a class="fetch_result" href="#">View Data</a>
     </div>
 </body>
+<script src="/js/domManipulate.js"></script>
 </html>
+
+<!-- <div class="skill_label maring_bottom--small">
+    <h3>C++</h3>
+    <span class="devider">&nbsp;--&nbsp;</span>
+    <h3>Level 8</h3>
+    <img id="closeBtn" class="close" src="../files/icon/close.svg" alt="close">
+</div> -->

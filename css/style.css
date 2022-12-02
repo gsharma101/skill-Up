@@ -70,24 +70,38 @@ body {
       font-size: 2rem;
       padding: 1rem;
       margin-right: 3rem; }
-    .header form input {
+    .header form .tech_box {
+      display: flex; }
+      .header form .tech_box input {
+        font-size: 1.8rem;
+        padding: 1rem;
+        width: 30%;
+        margin-right: 2rem; }
+    .header form .input {
       font-size: 1.8rem;
       padding: 1rem;
       width: 50%;
       margin-bottom: 1rem; }
-      .header form input[type="email"] {
+      .header form .input[type="email"] {
         width: 100%; }
     .header form .skills_selected .skill_label {
       display: flex;
-      font-size: 1.3rem;
+      font-size: 1rem;
       background-color: #555555;
       font-family: Arial, Helvetica, sans-serif;
-      padding: .5rem;
       color: white;
       width: 20%;
-      border-radius: 3rem;
-      justify-content: center; }
-    .header form .add {
+      padding: .5rem;
+      border-radius: 1rem;
+      justify-content: center;
+      align-items: center; }
+    .header form .skills_selected .close {
+      width: 2rem;
+      height: 2rem;
+      display: none; }
+      .header form .skills_selected .close:hover {
+        cursor: pointer; }
+    .header form .addDataBtn {
       border: none;
       font-size: 2rem;
       padding: 1rem 2rem;
@@ -99,7 +113,7 @@ body {
     .header form .submit {
       display: flex;
       justify-content: center;
-      width: 50%;
+      width: 30%;
       padding: 1rem;
       font-size: 1.8rem;
       color: white;
