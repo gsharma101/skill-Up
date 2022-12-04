@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" />
     <title>Skill Up</title>
 </head>
 
@@ -14,11 +15,11 @@
         <div class="heading_box">
             <h1 class="heading">Skill Up</h1>
         </div>
-        <form action="#">
+        <form method="post">
             <div class="sideBySide">
-                <input class="input" type="text" name="First Name" id="fname" placeholder="First Name"
+                <input class="input" type="text" name="fname" id="fname" placeholder="First Name"
                     required><br>&nbsp;&nbsp;&nbsp;
-                <input class="input" type="text" name="Last Name" id="lname" placeholder="Last Name" required><br>
+                <input class="input" type="text" name="lname" id="lname" placeholder="Last Name" required><br>
             </div>
             <input class="input" type="email" name="email" id="email" placeholder="Email" required><br>
             <label for="cars">Add Skills:</label><br>
@@ -46,13 +47,14 @@
             <div class="skills_selected maring_bottom--medium">
             </div>
             <hr class="maring_bottom--medium">
-            <button class="submit" type="submit">Submit</button>
+            <button class="submit submitBtn" type="submit">Submit</button>
         </form>
         <hr class="maring_bottom--medium">
         <a class="fetch_result" href="#">View Data</a>
     </div>
 </body>
-<script src="/js/domManipulate.js"></script>
+<script src="js/domManipulate.js"></script>
+
 </html>
 
 <!-- <div class="skill_label maring_bottom--small">
