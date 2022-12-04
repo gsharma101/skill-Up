@@ -17,6 +17,16 @@
 .maring_bottom--medium {
   margin-bottom: 2rem !important; }
 
+.table_box {
+  width: 50%;
+  border: 5px solid blue; }
+  .table_box .table {
+    font-size: 1.5rem; }
+  .table_box tr,
+  .table_box td,
+  .table_box th {
+    padding: 1rem; }
+
 *,
 *::after,
 *::before {
@@ -38,16 +48,15 @@ html {
 
 body {
   box-sizing: border-box;
-  padding: 3rem; }
+  display: flex; }
   @media (max-width: 56.25em) {
     body {
       padding: 0; } }
 
 .header {
-  width: 80rem;
+  width: 50%;
   max-width: 100rem;
-  margin: 0 auto;
-  padding: 3rem 6rem; }
+  border: 5px solid red; }
   .header .heading_box {
     text-align: center; }
     .header .heading_box .heading {
@@ -67,18 +76,18 @@ body {
       padding: .5rem;
       border-radius: .5rem; }
     .header form select {
-      font-size: 2rem;
+      font-size: 1.5rem;
       padding: 1rem;
       margin-right: 3rem; }
     .header form .tech_box {
       display: flex; }
       .header form .tech_box input {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         padding: 1rem;
         width: 30%;
         margin-right: 2rem; }
     .header form .input {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       padding: 1rem;
       width: 50%;
       margin-bottom: 1rem; }
@@ -128,3 +137,12 @@ body {
     color: white;
     padding: 1rem;
     border-radius: 1rem; }
+  .header .successMsg {
+    background-color: #4caf50;
+    display: block;
+    width: 100%;
+    color: White;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase; }
