@@ -34,22 +34,34 @@ let showdata = function () {
   xhr.open("GET", "retrieve.php", true);
   xhr.responseType = 'json';
   xhr.onload = () => {
-      if (xhr.status === 200) {
-          console.log(xhr.response);
-          let x;
-          if (xhr.response) {
-              x = xhr.response;
-          } else {
-              x = '';
-          }
-          for (let i = 0; i < x.length; i++) {
-              tableBody.innerHTML += `<tr><td>${x[i].fname} ${x[i].lname}</td><td>${x[i].email}</td><td>${x[i].skills}
-              </td>
-              <td><button>Delete</button></td></tr>`;
-          }
+    if (xhr.status === 200) {
+      // console.log(xhr.response);
+      let x;
+      if (xhr.response) {
+        x = xhr.response;
       } else {
-          console.log('Problem Occured');
+        x = '';
       }
+      for (let i = 0; i < x.length; i++) {
+        let skillObj = JSON.parse(x[i].skills);
+        let entries = Object.entries(skillObj);
+        console.log(entries);
+        // for (const [key, value] of entries) 
+        tableBody.innerHTML += 
+        `<tr><td class="userName">
+        ${x[i].fname} ${x[i].lname}
+        </td><td>
+        ${x[i].email}
+        </td><td>
+        ${entries}
+        </td><td>
+        <button class="deleteBtn">Delete</button>
+        </td></tr>`;
+      }
+
+    } else {
+      console.log('Problem Occured');
+    }
   };
   xhr.send();
 }
@@ -70,9 +82,9 @@ submit.addEventListener('click', function (e) {
     if (xhr.status === 200) {
       console.log(xhr.responseText);
       msgDisplay.innerHTML = `<h3>${xhr.responseText}</h3>`;
-      setTimeout(function(){
+      setTimeout(function () {
         msgDisplay.innerHTML = '';
-      },5000);
+      }, 5000);
       showdata();
     } else {
       console.log("Problem Occured");

@@ -1,13 +1,47 @@
 .table_box {
-    width:50%;
-    border: 5px solid blue;
+    width: 50%;
+    // border: 5px solid blue;
 
-    .table{
+    .table {
         font-size: 1.5rem;
+        width: 100%;
+        font-family: Arial, Helvetica, sans-serif;
     }
+
+    .heading_box{
+        text-align: center;
+        .heading{
+            font-size: 3rem;
+            text-transform: uppercase;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    }
+
     tr,
     td,
     th {
         padding: 1rem;
+    }
+
+    .userName{
+        text-transform: capitalize;
+    }
+
+    .tableHeading{
+        background-color: rgba(128, 128, 128, 0.295);
+    }
+
+    td {
+        .deleteBtn {
+            display: block;
+            font-size: 1rem;
+            border: none;
+            background-color: red;
+            color: white;
+            padding: 1rem;
+            border-radius: .5rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
     }
 }
