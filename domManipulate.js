@@ -29,6 +29,7 @@ const addSkillToDom = function (e) {
   skillLevel.value = skillValue = '';
 }
 
+// ? Retriving Datat
 let showdata = function () {
   tableBody.innerHTML = '';
   let xhr = new XMLHttpRequest();
