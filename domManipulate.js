@@ -9,7 +9,7 @@ let skillLevel = document.querySelector('#skillLevel');
 let addSkill = document.querySelector('.addDataBtn');
 let skill_dev = document.querySelector('.skills_selected');
 let submit = document.querySelector('.submitBtn');
-let msgDisplay = document.querySelector('.successMsg');
+let msgDisplay = document.querySelector('.msg_box');
 let tableBody = document.querySelector('.table_body');
 
 let allSkillObj = {};
@@ -30,6 +30,7 @@ const addSkillToDom = function (e) {
 }
 
 let showdata = function () {
+  let x;
   tableBody.innerHTML = '';
   let xhr = new XMLHttpRequest();
   xhr.open("GET", "retrieve.php", true);
@@ -37,7 +38,6 @@ let showdata = function () {
   xhr.onload = () => {
     if (xhr.status === 200) {
       // console.log(xhr.response);
-      let x;
       if (xhr.response) {
         x = xhr.response;
       } else {
@@ -56,13 +56,14 @@ let showdata = function () {
         ${entries}
         </span>
         </td><td>
-        <button class="deleteBtn" data-sid="${x[i].id}">Delete</button>
+        <button class="deleteBtn del-btn" data-sid="${x[i].id}">Delete</button>
         </td></tr>`;
       }
 
     } else {
       console.log('Problem Occured');
     }
+    deleteData();
   };
   xhr.send();
 }
@@ -82,7 +83,7 @@ submit.addEventListener('click', function (e) {
   xhr.onload = () => {
     if (xhr.status === 200) {
       console.log(xhr.responseText);
-      msgDisplay.innerHTML = `<h3>${xhr.responseText}</h3>`;
+      msgDisplay.innerHTML = `<h3 class="successMsg">${xhr.responseText}</h3>`;
       setTimeout(function () {
         msgDisplay.innerHTML = '';
       }, 5000);
@@ -102,5 +103,33 @@ submit.addEventListener('click', function (e) {
   email.value = emailValue = '';
   skill_dev.innerHTML = ' ';
 });
+
+// ? Delete Data From database
+
+function deleteData() {
+  let x = document.getElementsByClassName('del-btn');
+  for (let i = 0; i < x.length; i++) {
+    x[i].addEventListener("click", function () {
+      let id = x[i].getAttribute("data-sid");
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "delete.php", true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          msgDisplay.innerHTML = `<h3 class="deleteMsg">${xhr.responseText}</h3>`;
+          setTimeout(function () {
+            msgDisplay.innerHTML = '';
+          }, 5000);
+          showdata();
+        } else {
+          console.log("Problem Occured")
+        }
+      }
+      let dataToSend = { sid: id };
+      const JSONdata = JSON.stringify(dataToSend);
+      xhr.send(JSONdata);
+    });
+  }
+}
 
 addSkill.addEventListener('click', addSkillToDom);
