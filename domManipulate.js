@@ -1,4 +1,5 @@
 'use strict';
+// import {each} from 'foreach-object';
 let fname = document.getElementById('fname');
 let lname = document.getElementById('lname');
 let email = document.getElementById('email');
@@ -45,17 +46,17 @@ let showdata = function () {
       for (let i = 0; i < x.length; i++) {
         let skillObj = JSON.parse(x[i].skills);
         let entries = Object.entries(skillObj);
-        console.log(entries);
-        // for (const [key, value] of entries) 
-        tableBody.innerHTML += 
-        `<tr><td class="userName">
+        tableBody.innerHTML +=
+          `<tr><td class="userName">
         ${x[i].fname} ${x[i].lname}
         </td><td>
         ${x[i].email}
         </td><td>
+        <span class="skillsFromDB">
         ${entries}
+        </span>
         </td><td>
-        <button class="deleteBtn">Delete</button>
+        <button class="deleteBtn" data-sid="${x[i].id}">Delete</button>
         </td></tr>`;
       }
 
