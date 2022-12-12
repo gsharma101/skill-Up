@@ -28,6 +28,7 @@ html {
 body {
   box-sizing: border-box;
   display: flex;
+  font-family: 'Lato', sans-serif;
 
   @include respond(tab-port) {
     padding: 0;

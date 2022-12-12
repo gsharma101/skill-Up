@@ -22,7 +22,7 @@ const addSkillToDom = function (e) {
 
   skill_dev.innerHTML += `<div class="skill_label maring_bottom--small">
         <h3>${techValue}</h3>
-        <span class="devider">&nbsp;--&nbsp;</span>
+        <span class="devider">&nbsp; Level &nbsp;</span>
         <h3>${skillValue}</h3>
     </div>`;
   techField.value = techValue = '';
