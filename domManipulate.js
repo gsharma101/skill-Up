@@ -79,7 +79,7 @@ let showdata = function () {
         let entries = Object.entries(skillObj);
         let skillList = "";
         entries.forEach((entry) => {
-          skillList += `<li>${entry[0]} Level: ${entry[1]}</li>`
+          skillList += `<li>- ${entry[0]} Level: ${entry[1]}</li>`
         })
         // console.log(entries);
         // console.log(typeof (entries));
