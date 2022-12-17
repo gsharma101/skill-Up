@@ -13,6 +13,7 @@ let msgDisplay = document.querySelector('.msg_box');
 let tableBody = document.querySelector('.table_body');
 
 let allSkillObj = {};
+const techStack = "https://demo.stratbeans.com/atum-barium/index.php?r=site/fetchTechnologies";
 
 const addSkillToDom = function (e) {
   e.preventDefault();
@@ -29,6 +30,34 @@ const addSkillToDom = function (e) {
   skillLevel.value = skillValue = '';
 }
 
+let loadLanguages = function () {
+  let langs = [];
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", techStack, true);
+  xhr.onload = () => {
+    if (xhr.status === 200) {
+      // console.log(xhr.response);
+      let data = JSON.parse(xhr.responseText);
+      langs = data.map((langObj)=>{
+        return langObj.name;
+      })
+      langs.forEach(name => {
+        let opt = document.createElement('option');
+        opt.value = name;
+        opt.innerHTML = name;
+        techField.appendChild(opt);
+      });
+    } else {
+      console.log('Api Failed');
+    }
+  };
+  xhr.send();
+}
+
+loadLanguages();
+
+
 // ? Retriving Datat
 let showdata = function () {
   let x;
@@ -44,18 +73,25 @@ let showdata = function () {
       } else {
         x = '';
       }
+
       for (let i = 0; i < x.length; i++) {
         let skillObj = JSON.parse(x[i].skills);
         let entries = Object.entries(skillObj);
+        let skillList = "";
+        entries.forEach((entry) => {
+          skillList += `<li>${entry[0]} Level: ${entry[1]}</li>`
+        })
+        // console.log(entries);
+        // console.log(typeof (entries));
         tableBody.innerHTML +=
           `<tr><td class="userName">
         ${x[i].fname} ${x[i].lname}
         </td><td>
         ${x[i].email}
         </td><td>
-        <span class="skillsFromDB">
-        ${entries}
-        </span>
+        <ul class="skillsFromDB">
+        ${skillList}
+        </ul>
         </td><td>
         <button class="deleteBtn del-btn" data-sid="${x[i].id}">Delete</button>
         </td></tr>`;
@@ -106,7 +142,6 @@ submit.addEventListener('click', function (e) {
 });
 
 // ? Delete Data From database
-
 function deleteData() {
   let x = document.getElementsByClassName('del-btn');
   for (let i = 0; i < x.length; i++) {

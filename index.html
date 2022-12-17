@@ -30,9 +30,12 @@
             <label for="cars">Add Skills:</label><br>
             <!-- ?Skill -->
             <div class="tech_box maring_bottom--medium">
-                <input type="text" name="tech" id="techField" placeholder="Select Techonology"><br>
+                <select name="tech" id="techField">
+                    <option value=""disabled selected>Select Techonology:</option>
+                </select><br>
+                <!-- <input type="text" name="tech" id="techField" placeholder="Select Techonology"><br> -->
                 <select name="cars" id="skillLevel">
-                    <option value="">Level of skill:</option>
+                    <option value="" disabled selected>Level of skill:</option>
                     <option value="1">Level 1</option>
                     <option value="2">Level 2</option>
                     <option value="3">Level 3</option>
