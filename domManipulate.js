@@ -15,24 +15,30 @@ let tableBody = document.querySelector('.table_body');
 let allSkillObj = {};
 const techStack = "https://demo.stratbeans.com/atum-barium/index.php?r=site/fetchTechnologies";
 
-const formValidation = function(){
-// ?Form Validation
-}
-
 const addSkillToDom = function (e) {
   e.preventDefault();
   let techValue = techField.value;
   let skillValue = skillLevel.value;
-  allSkillObj[techValue] = skillValue;
 
-  skill_dev.innerHTML += `<div class="skill_label maring_bottom--small">
+  if (techValue == '' || skillValue == '') {
+    let skillsError = document.querySelector('.skillsError');
+    skillsError.innerHTML = '<p class="skillsErrorMsg">both fields are required</p>';
+    setTimeout(function () {
+      skillsError.innerHTML = '';
+    }, 3000);
+  } else {
+    allSkillObj[techValue] = skillValue;
+    skill_dev.innerHTML += `<div class="skill_label">
         <h3>${techValue}</h3>
         <span class="devider">&nbsp; Level &nbsp;</span>
         <h3>${skillValue}</h3>
     </div>`;
-  techField.value = techValue = '';
-  skillLevel.value = skillValue = '';
+    techField.value = techValue = '';
+    skillLevel.value = skillValue = '';
+  }
 }
+
+{/* <img class="closeBtn" src="files/icon/close.svg" alt="close"> */ }
 
 let loadLanguages = function () {
   let langs = [];
@@ -43,7 +49,7 @@ let loadLanguages = function () {
     if (xhr.status === 200) {
       // console.log(xhr.response);
       let data = JSON.parse(xhr.responseText);
-      langs = data.map((langObj)=>{
+      langs = data.map((langObj) => {
         return langObj.name;
       })
       langs.forEach(name => {
@@ -58,9 +64,56 @@ let loadLanguages = function () {
   };
   xhr.send();
 }
-
 loadLanguages();
 
+//? Sending Data
+submit.addEventListener('click', function (e) {
+  e.preventDefault();
+  let fnameValue = fname.value;
+  let lnameValue = lname.value;
+  let emailValue = email.value;
+
+  if (fnameValue == '' || lnameValue == '' || emailValue == '') {
+    msgDisplay.innerHTML = '<p class="skillsErrorMsg">All fields are required</p>';
+    setTimeout(function () {
+      msgDisplay.innerHTML = '';
+    }, 3000);
+  } else if (Object.keys(allSkillObj).length === 0) {
+    msgDisplay.innerHTML = '<p class="skillsErrorMsg">No skills are selected</p>';
+    setTimeout(function () {
+      msgDisplay.innerHTML = '';
+    }, 3000);
+  } else {
+    const sendTo = 'http://127.0.0.1/skillup/form.php';
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", sendTo, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    //Handle Response 
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        console.log(xhr.responseText);
+        msgDisplay.innerHTML = `<h3 class="successMsg">${xhr.responseText}</h3>`;
+        setTimeout(function () {
+          msgDisplay.innerHTML = '';
+        }, 3000);
+        showdata();
+      } else {
+        console.log("Problem Occured");
+      }
+    };
+
+    let dataToSend = { f_name: fnameValue, l_name: lnameValue, emailAdd: emailValue, skills: allSkillObj };
+    const JSONdata = JSON.stringify(dataToSend);
+    xhr.send(JSONdata);
+
+    // ?reset
+    fname.value = fnameValue = '';
+    lname.value = lnameValue = '';
+    email.value = emailValue = '';
+    skill_dev.innerHTML = ' ';
+  }
+
+});
 
 // ? Retriving Datat
 let showdata = function () {
@@ -109,41 +162,6 @@ let showdata = function () {
   xhr.send();
 }
 showdata();
-
-//? Sending Data
-submit.addEventListener('click', function (e) {
-  e.preventDefault();
-  let fnameValue = fname.value;
-  let lnameValue = lname.value;
-  let emailValue = email.value;
-  const sendTo = 'http://127.0.0.1/skillup/form.php';
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", sendTo, true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  //Handle Response 
-  xhr.onload = () => {
-    if (xhr.status === 200) {
-      console.log(xhr.responseText);
-      msgDisplay.innerHTML = `<h3 class="successMsg">${xhr.responseText}</h3>`;
-      setTimeout(function () {
-        msgDisplay.innerHTML = '';
-      }, 3000);
-      showdata();
-    } else {
-      console.log("Problem Occured");
-    }
-  };
-
-  let dataToSend = { f_name: fnameValue, l_name: lnameValue, emailAdd: emailValue, skills: allSkillObj };
-  const JSONdata = JSON.stringify(dataToSend);
-  xhr.send(JSONdata);
-
-  // ?reset
-  fname.value = fnameValue = '';
-  lname.value = lnameValue = '';
-  email.value = emailValue = '';
-  skill_dev.innerHTML = ' ';
-});
 
 // ? Delete Data From database
 function deleteData() {

@@ -11,7 +11,7 @@ $skills = json_encode($mydata['skills']);
 if (!empty($fname) && !empty($lname) && !empty($email) && !empty($skills)) {
     $sql = "INSERT INTO users(fname,lname,email,skills)VALUES ('$fname','$lname','$email','$skills')";
     if($conn->query($sql) == TRUE){
-        echo 'User data saved Successfully';
+        echo 'Successfully added';
     }else{
         echo 'Unable to save data';
     }
