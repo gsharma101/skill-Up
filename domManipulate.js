@@ -15,6 +15,10 @@ let tableBody = document.querySelector('.table_body');
 let allSkillObj = {};
 const techStack = "https://demo.stratbeans.com/atum-barium/index.php?r=site/fetchTechnologies";
 
+const formValidation = function(){
+// ?Form Validation
+}
+
 const addSkillToDom = function (e) {
   e.preventDefault();
   let techValue = techField.value;
@@ -123,7 +127,7 @@ submit.addEventListener('click', function (e) {
       msgDisplay.innerHTML = `<h3 class="successMsg">${xhr.responseText}</h3>`;
       setTimeout(function () {
         msgDisplay.innerHTML = '';
-      }, 5000);
+      }, 3000);
       showdata();
     } else {
       console.log("Problem Occured");
@@ -155,7 +159,7 @@ function deleteData() {
           msgDisplay.innerHTML = `<h3 class="deleteMsg">${xhr.responseText}</h3>`;
           setTimeout(function () {
             msgDisplay.innerHTML = '';
-          }, 5000);
+          }, 3000);
           showdata();
         } else {
           console.log("Problem Occured")
