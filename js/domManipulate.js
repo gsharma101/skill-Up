@@ -84,7 +84,7 @@ submit.addEventListener('click', function (e) {
       msgDisplay.innerHTML = '';
     }, 3000);
   } else {
-    const sendTo = 'http://127.0.0.1/skillup/form.php';
+    const sendTo = 'http://127.0.0.1/skillup/php/form.php';
     const xhr = new XMLHttpRequest();
     xhr.open("POST", sendTo, true);
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -120,7 +120,7 @@ let showdata = function () {
   let x;
   tableBody.innerHTML = '';
   let xhr = new XMLHttpRequest();
-  xhr.open("GET", "retrieve.php", true);
+  xhr.open("GET", "http://127.0.0.1/skillup/php/retrieve.php", true);
   xhr.responseType = 'json';
   xhr.onload = () => {
     if (xhr.status === 200) {
@@ -170,7 +170,7 @@ function deleteData() {
     x[i].addEventListener("click", function () {
       let id = x[i].getAttribute("data-sid");
       const xhr = new XMLHttpRequest();
-      xhr.open("POST", "delete.php", true);
+      xhr.open("POST", "http://127.0.0.1/skillup/php/delete.php", true);
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.onload = () => {
         if (xhr.status === 200) {
